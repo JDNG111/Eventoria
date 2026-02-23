@@ -145,93 +145,98 @@ public class EventsController : ControllerBase
         }
     }
 
-[HttpPost("{id}/attend")]
-public async Task<IActionResult> AttendEvent(int id)
-{
-    try
+    [HttpPost("{id}/attend")]
+    public async Task<IActionResult> AttendEvent(int id)
     {
-        // Obtener userId
-        int userId;
         try
         {
-            userId = GetCurrentUserId();
+            // Obtener userId
+            int userId;
+            try
+            {
+                userId = GetCurrentUserId();
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(new { message = ex.Message });
+            }
+
+            Console.WriteLine($"=== ATTEND EVENT ===");
+            Console.WriteLine($"Event ID: {id}");
+            Console.WriteLine($"User ID: {userId}");
+
+            // Buscar el evento con sus asistentes
+            var @event = await _context.Events
+                .Include(e => e.Attendees)
+                .Include(e => e.CreatedBy)  // ← IMPORTANTE: incluir CreatedBy aquí
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (@event == null)
+            {
+                Console.WriteLine($"ERROR: Evento {id} no encontrado");
+                return NotFound(new { message = "Evento no encontrado" });
+            }
+
+            Console.WriteLine($"Evento encontrado: {@event.Title}");
+            Console.WriteLine($"Asistentes actuales: {@event.Attendees.Count}/{@event.MaxAttendees}");
+
+            // Verificar si ya asiste
+            var alreadyAttending = @event.Attendees.Any(a => a.UserId == userId);
+            if (alreadyAttending)
+            {
+                Console.WriteLine($"ERROR: Usuario {userId} ya está registrado");
+                return BadRequest(new { message = "Ya estás registrado en este evento" });
+            }
+
+            // Verificar capacidad
+            if (@event.Attendees.Count >= @event.MaxAttendees)
+            {
+                Console.WriteLine($"ERROR: Evento lleno");
+                return BadRequest(new { message = "El evento ha alcanzado su capacidad máxima" });
+            }
+
+            // Crear el registro de asistencia
+            var attendance = new EventAttendance
+            {
+                UserId = userId,
+                EventId = id,
+                RegisteredAt = DateTime.UtcNow,
+                HasPaid = @event.TicketPrice.HasValue ? false : true
+            };
+
+            Console.WriteLine("Agregando asistencia...");
+            _context.EventAttendances.Add(attendance);
+            await _context.SaveChangesAsync();
+            
+            Console.WriteLine("✅ Asistencia registrada exitosamente");
+            
+            // Recargar el evento con la nueva asistencia
+            await _context.Entry(@event)
+                .Collection(e => e.Attendees)
+                .LoadAsync();
+            
+            Console.WriteLine($"Asistentes después de guardar: {@event.Attendees.Count}/{@event.MaxAttendees}");
+            
+            // Devolver el DTO actualizado
+            var eventDto = MapToDto(@event);
+            Console.WriteLine($"DTO AttendeesCount: {eventDto.AttendeesCount}");
+            
+            return Ok(eventDto);
         }
-        catch (UnauthorizedAccessException ex)
+        catch (Exception ex)
         {
-            return Unauthorized(new { message = ex.Message });
+            Console.WriteLine($"=== ERROR EN ATTEND ===");
+            Console.WriteLine($"Message: {ex.Message}");
+            Console.WriteLine($"StackTrace: {ex.StackTrace}");
+            Console.WriteLine($"InnerException: {ex.InnerException?.Message}");
+            
+            return StatusCode(500, new { 
+                message = "Error al registrar asistencia", 
+                error = ex.Message,
+                details = ex.InnerException?.Message
+            });
         }
-
-        Console.WriteLine($"=== ATTEND EVENT ===");
-        Console.WriteLine($"Event ID: {id}");
-        Console.WriteLine($"User ID: {userId}");
-
-        // Buscar el evento con sus asistentes
-        var @event = await _context.Events
-            .Include(e => e.Attendees)
-            .FirstOrDefaultAsync(e => e.Id == id);
-
-        if (@event == null)
-        {
-            Console.WriteLine($"ERROR: Evento {id} no encontrado");
-            return NotFound(new { message = "Evento no encontrado" });
-        }
-
-        Console.WriteLine($"Evento encontrado: {@event.Title}");
-        Console.WriteLine($"Asistentes actuales: {@event.Attendees.Count}/{@event.MaxAttendees}");
-
-        // Verificar si ya asiste
-        var alreadyAttending = @event.Attendees.Any(a => a.UserId == userId);
-        if (alreadyAttending)
-        {
-            Console.WriteLine($"ERROR: Usuario {userId} ya está registrado");
-            return BadRequest(new { message = "Ya estás registrado en este evento" });
-        }
-
-        // Verificar capacidad
-        if (@event.Attendees.Count >= @event.MaxAttendees)
-        {
-            Console.WriteLine($"ERROR: Evento lleno");
-            return BadRequest(new { message = "El evento ha alcanzado su capacidad máxima" });
-        }
-
-        // Crear el registro de asistencia
-        var attendance = new EventAttendance
-        {
-            UserId = userId,
-            EventId = id,
-            RegisteredAt = DateTime.UtcNow,
-            HasPaid = @event.TicketPrice.HasValue ? false : true
-        };
-
-        Console.WriteLine("Agregando asistencia...");
-        _context.EventAttendances.Add(attendance);
-        await _context.SaveChangesAsync();
-
-        Console.WriteLine("✅ Asistencia registrada exitosamente");
-        
-        // 🔥 CAMBIO IMPORTANTE: Obtener el evento actualizado con todos sus datos
-        var updatedEvent = await _context.Events
-            .Include(e => e.CreatedBy)
-            .Include(e => e.Attendees)
-            .FirstOrDefaultAsync(e => e.Id == id);
-        
-        // Devolver el evento completo en el formato DTO
-        return Ok(MapToDto(updatedEvent!));
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"=== ERROR EN ATTEND ===");
-        Console.WriteLine($"Message: {ex.Message}");
-        Console.WriteLine($"StackTrace: {ex.StackTrace}");
-        Console.WriteLine($"InnerException: {ex.InnerException?.Message}");
-        
-        return StatusCode(500, new { 
-            message = "Error al registrar asistencia", 
-            error = ex.Message,
-            details = ex.InnerException?.Message
-        });
-    }
-}
 }
 
 public class CreateEventRequest
