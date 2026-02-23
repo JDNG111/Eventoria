@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventoria.Api", "Eventoria.Api\Eventoria.Api.csproj", "{DBC65DE4-04CF-4D9C-924C-BF5F70820193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventoria.Core", "Eventoria.Core\Eventoria.Core.csproj", "{A9F1C11A-257A-490A-B815-1CB6C45451F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventoria.Infrastructure", "Eventoria.Infrastructure\Eventoria.Infrastructure.csproj", "{8B999A88-3C45-4CDD-BD28-97FC1FF31073}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBC65DE4-04CF-4D9C-924C-BF5F70820193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBC65DE4-04CF-4D9C-924C-BF5F70820193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBC65DE4-04CF-4D9C-924C-BF5F70820193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBC65DE4-04CF-4D9C-924C-BF5F70820193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F1C11A-257A-490A-B815-1CB6C45451F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F1C11A-257A-490A-B815-1CB6C45451F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F1C11A-257A-490A-B815-1CB6C45451F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F1C11A-257A-490A-B815-1CB6C45451F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B999A88-3C45-4CDD-BD28-97FC1FF31073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B999A88-3C45-4CDD-BD28-97FC1FF31073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B999A88-3C45-4CDD-BD28-97FC1FF31073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B999A88-3C45-4CDD-BD28-97FC1FF31073}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

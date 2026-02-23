@@ -1,0 +1,17 @@
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.csproj.AssemblyReference.cache
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.AssemblyInfoInputs.cache
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.AssemblyInfo.cs
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.csproj.CoreCompileInputs.cache
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\bin\Debug\net8.0\Eventoria.Infrastructure.deps.json
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\bin\Debug\net8.0\Eventoria.Infrastructure.runtimeconfig.json
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\bin\Debug\net8.0\Eventoria.Infrastructure.dll
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\bin\Debug\net8.0\Eventoria.Infrastructure.pdb
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\bin\Debug\net8.0\Eventoria.Core.dll
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\bin\Debug\net8.0\Eventoria.Core.pdb
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventori.FB8D0C09.Up2Date
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.dll
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\refint\Eventoria.Infrastructure.dll
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.pdb
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\Eventoria.Infrastructure.genruntimeconfig.cache
+D:\projects_net\Eventoria\backend\Eventoria.Infrastructure\obj\Debug\net8.0\ref\Eventoria.Infrastructure.dll

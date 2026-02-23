@@ -1,0 +1,11 @@
+D:\projects_net\Eventoria\backend\Eventoria.Core\bin\Debug\net8.0\Eventoria.Core.deps.json
+D:\projects_net\Eventoria\backend\Eventoria.Core\bin\Debug\net8.0\Eventoria.Core.dll
+D:\projects_net\Eventoria\backend\Eventoria.Core\bin\Debug\net8.0\Eventoria.Core.pdb
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\Eventoria.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\Eventoria.Core.AssemblyInfoInputs.cache
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\Eventoria.Core.AssemblyInfo.cs
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\Eventoria.Core.csproj.CoreCompileInputs.cache
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\Eventoria.Core.dll
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\refint\Eventoria.Core.dll
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\Eventoria.Core.pdb
+D:\projects_net\Eventoria\backend\Eventoria.Core\obj\Debug\net8.0\ref\Eventoria.Core.dll
